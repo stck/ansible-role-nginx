@@ -62,7 +62,7 @@ http {
 {% endif %}
 {% if upstream.group is defined %}
 {% for host in groups[upstream.group] %}
-        server {{ hostvars[host]['ansible_default_ipv4']['address'] }}{% if upstream.port is defined %}:{{ upstream.port }}{% endif %};
+        server {{ hostvars[host]['private_ip'] }}{% if upstream.port is defined %}:{{ upstream.port }}{% endif %};
 {% endfor %}
 {% else %}
 {% for server in upstream.servers %}
